@@ -1,0 +1,44 @@
+.shell {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+  padding: var(--safe-t) var(--safe-r) 0 var(--safe-l);
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 14px 20px 10px;
+  border-bottom: var(--rule);
+}
+
+.masthead h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.masthead h1 em {
+  font-style: italic;
+}
+
+.masthead .sub {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.masthead .night-toggle {
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.masthead .night-toggle:hover {
+  border-bottom-color: var(--ink);
+}
