@@ -22,22 +22,22 @@ configured in `vercel.json`) and under a subpath (GitHub Pages, via
 
 ## The cabinet
 
-| No. | Specimen          | Kind | Notes                                                           |
-| --- | ----------------- | ---- | --------------------------------------------------------------- |
-| 01  | Stair             | 3D   | flights, rise/going, turn per landing, wander, waist/spine/mass |
-| 02  | Column            | 3D   | entasis, taper, flutes, drums, ruin, five abstract capitals     |
-| 03  | Facade fins       | 3D   | bays, floors, fin depth, rotation gradient, noise               |
-| 04  | Vault             | 3D   | barrel / groin / cloister, four sections, ribs, bay wobble      |
-| 05  | Tower massing     | 3D   | floors, plan shape, setbacks, twist, taper, podium              |
-| 06  | Truss             | 3D   | Pratt / Howe / Warren / random, flat / pitched / bowstring      |
-| 07  | Brick bond        | 2D   | seven bonds, mortar, hit-and-miss gaps, opening + soldier course |
-| 08  | Plan subdivision  | 2D   | recursive splits, corridors, doors on a spanning tree           |
-| 09  | Arcade            | 3D   | five arch profiles, storeys halving the rhythm, blind arches    |
-| 10  | Voxel folly       | 3D   | fill, cellular automaton, symmetry, gravity                     |
-| 11  | Roof              | 3D   | gable / hip / pyramid / mansard / shed / sawtooth, dormers      |
-| 12  | Louvre field      | 2D   | blades turned by sine, radial, noise, attractor or shear fields |
-| 13  | Site, contoured   | 2D   | marching-squares contours, terracing, a levelled platform       |
-| ??  | Wild card         |      | a random specimen with random parameters and seed               |
+| No. | Specimen          | Kind | Notes |
+| --- | ----------------- | ---- | ----- |
+|     | Wild card         |      | a random specimen with random parameters and seed |
+| 01  | Voxel folly       | 3D   | fill, cellular automaton, symmetry, gravity |
+| 02  | Louvre field      | 2D   | blades turned by sine, radial, noise, attractor or shear fields |
+| 03  | Site, contoured   | 2D   | marching-squares contours, terracing, a levelled platform |
+| 04  | Arcade            | 3D   | five arch profiles, storeys halving the rhythm, blind arches |
+| 05  | Tower massing     | 3D   | floors, plan shape, setbacks, twist, taper, podium |
+| 06  | Stair             | 3D   | flights, rise/going, turn per landing, wander, waist/spine/mass |
+| 07  | Plan subdivision  | 2D   | recursive splits, corridors, doors on a spanning tree |
+| 08  | Vault             | 3D   | barrel / groin / cloister, four sections, ribs, bay wobble |
+| 09  | Column            | 3D   | entasis, taper, flutes, drums, ruin, five abstract capitals |
+| 10  | Brick bond        | 2D   | seven bonds, mortar, hit-and-miss gaps, opening + soldier course |
+| 11  | Roof              | 3D   | gable / hip / pyramid / mansard / shed / sawtooth, dormers |
+| 12  | Facade fins       | 3D   | bays, floors, fin depth, rotation gradient, noise |
+| 13  | Truss             | 3D   | Pratt / Howe / Warren / random, flat / pitched / bowstring |
 
 Every tab has a seed (Reroll), Randomise params, Reset and export: SVG for 2D,
 PNG for everything, OBJ for 3D. The tab, seed and parameters live in the URL
@@ -57,7 +57,7 @@ import { createModel } from '../lib/model3d.js'; // or createDrawing from '../li
 export default {
   id: 'plinth',
   title: 'Plinth',
-  number: 14,
+  number: 14, // position in the tab strip
   dimension: '3d', // or '2d'
   note: 'One line, written like a catalogue entry.',
   params: [

@@ -7,7 +7,7 @@ const side = (h) => [Math.sin(h), Math.cos(h)];
 export default {
   id: 'stair',
   title: 'Stair',
-  number: 1,
+  number: 6,
   dimension: '3d',
   note: 'Flights and landings, turning by a fixed angle; it may wander.',
   params: [

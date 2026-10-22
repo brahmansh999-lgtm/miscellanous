@@ -7,7 +7,7 @@ const ARCH_SEGS = 20;
 export default {
   id: 'arcade',
   title: 'Arcade',
-  number: 9,
+  number: 4,
   dimension: '3d',
   note: 'Openings in a wall, in a row; upper storeys halve the rhythm.',
   params: [

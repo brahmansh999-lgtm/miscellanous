@@ -55,7 +55,7 @@ function layCourse(seq, width, m, rng, headerRatio) {
 export default {
   id: 'brick',
   title: 'Brick bond',
-  number: 7,
+  number: 10,
   dimension: '2d',
   scale: '1:20',
   note: 'An elevation of coursed brickwork. Some bricks are missing, on purpose.',

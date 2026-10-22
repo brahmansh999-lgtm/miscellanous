@@ -13,7 +13,7 @@ const FACES = [
 export default {
   id: 'folly',
   title: 'Voxel folly',
-  number: 10,
+  number: 1,
   dimension: '3d',
   note: 'Random cubes, smoothed by their neighbours, then left to fall.',
   params: [

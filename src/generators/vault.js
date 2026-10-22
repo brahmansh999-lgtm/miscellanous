@@ -12,7 +12,7 @@ const SECTORS = [
 export default {
   id: 'vault',
   title: 'Vault',
-  number: 4,
+  number: 8,
   dimension: '3d',
   note: 'A covered bay, repeated. Ribs where the surfaces meet, and some where they do not.',
   params: [

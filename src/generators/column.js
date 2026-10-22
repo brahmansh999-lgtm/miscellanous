@@ -5,7 +5,7 @@ const TAU = Math.PI * 2;
 export default {
   id: 'column',
   title: 'Column',
-  number: 2,
+  number: 9,
   dimension: '3d',
   note: 'Shaft, swelling and channels. Drums may have been robbed.',
   params: [

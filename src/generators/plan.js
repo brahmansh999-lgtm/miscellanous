@@ -22,7 +22,7 @@ function sharedEdge(a, b) {
 export default {
   id: 'plan',
   title: 'Plan subdivision',
-  number: 8,
+  number: 7,
   dimension: '2d',
   scale: '1:100',
   note: 'A rectangle divided, and divided again, until the rooms object.',

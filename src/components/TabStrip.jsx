@@ -13,6 +13,9 @@ export default function TabStrip({ generators, activeId, onSelect, onWildCard })
 
   return (
     <nav className="tabstrip" ref={ref} role="tablist" aria-label="Specimens">
+      <button type="button" className="tab tab-wild" onClick={onWildCard}>
+        <span className="tab-name">Wild card</span>
+      </button>
       {generators.map((g, i) => (
         <button
           key={g.id}
@@ -20,7 +23,7 @@ export default function TabStrip({ generators, activeId, onSelect, onWildCard })
           role="tab"
           aria-selected={g.id === activeId}
           className="tab"
-          style={{ marginLeft: GAPS[i % GAPS.length] }}
+          style={{ marginLeft: GAPS[(i + 1) % GAPS.length] }}
           onClick={() => onSelect(g.id)}
         >
           <span className="num tab-no">{String(g.number).padStart(2, '0')}</span>
@@ -28,10 +31,6 @@ export default function TabStrip({ generators, activeId, onSelect, onWildCard })
           <span className="tab-dim">{g.dimension}</span>
         </button>
       ))}
-      <button type="button" className="tab tab-wild" style={{ marginLeft: 28 }} onClick={onWildCard}>
-        <span className="num tab-no">??</span>
-        <span className="tab-name">Wild card</span>
-      </button>
     </nav>
   );
 }

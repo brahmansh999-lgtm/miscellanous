@@ -3,7 +3,7 @@ import { createModel } from '../lib/model3d.js';
 export default {
   id: 'truss',
   title: 'Truss',
-  number: 6,
+  number: 13,
   dimension: '3d',
   note: 'Chords, posts and diagonals; the random kind is not recommended.',
   params: [

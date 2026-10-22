@@ -5,7 +5,7 @@ const DEG = Math.PI / 180;
 export default {
   id: 'facade',
   title: 'Facade fins',
-  number: 3,
+  number: 12,
   dimension: '3d',
   note: 'Vertical fins on a glazed face, turned by a gradient and a little weather.',
   params: [

@@ -5,7 +5,7 @@ const DEG = Math.PI / 180;
 export default {
   id: 'louvre',
   title: 'Louvre field',
-  number: 12,
+  number: 2,
   dimension: '2d',
   scale: '1:50',
   note: 'Pivoting blades in plan, each turned by a field. Closed is parallel to the wall.',

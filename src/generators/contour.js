@@ -43,7 +43,7 @@ function contourPaths(grid, n, cell, levels) {
 export default {
   id: 'contour',
   title: 'Site, contoured',
-  number: 13,
+  number: 3,
   dimension: '2d',
   scale: '1:1000',
   note: 'Ground that was never surveyed, levelled where something wants to stand.',
