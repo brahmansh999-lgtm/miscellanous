@@ -1,15 +1,15 @@
-/* Tokens. Paper and ink by day, a flat blueprint by night. */
+/* Tokens: a flat blueprint sheet with pale ink and one red accent. */
 :root {
-  --paper: #f2efe8;
-  --paper-2: #e9e5db;
-  --ink: #1a1a1a;
-  --ink-2: #5a564e;
-  --ink-3: #8a857a;
-  --hair: rgba(26, 26, 26, 0.18);
-  --accent: #c8361d;
-  --tone-1: #e2ddd0;
-  --tone-2: #cbc4b4;
-  --tone-3: #8f887a;
+  --paper: #15283f;
+  --paper-2: #1b3150;
+  --ink: #e6e1d4;
+  --ink-2: #a9b5c2;
+  --ink-3: #6f8399;
+  --hair: rgba(230, 225, 212, 0.2);
+  --accent: #ec6a4c;
+  --tone-1: #1d3554;
+  --tone-2: #27436a;
+  --tone-3: #46628a;
 
   --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
@@ -22,20 +22,6 @@
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-l: env(safe-area-inset-left, 0px);
 
-  color-scheme: light;
-}
-
-:root[data-theme='night'] {
-  --paper: #15283f;
-  --paper-2: #1b3150;
-  --ink: #e6e1d4;
-  --ink-2: #a9b5c2;
-  --ink-3: #6f8399;
-  --hair: rgba(230, 225, 212, 0.2);
-  --accent: #ec6a4c;
-  --tone-1: #1d3554;
-  --tone-2: #27436a;
-  --tone-3: #46628a;
   color-scheme: dark;
 }
 

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { GENERATORS, byId, runGenerator } from './generators/index.js';
 import { defaults, randomParams } from './lib/schema.js';
 import { randomSeed } from './lib/rng.js';
-import { PALETTES } from './lib/palette.js';
+import { PALETTE as palette } from './lib/palette.js';
 import { sheetMeta } from './lib/meta.js';
 import { decodeHash, encodeHash } from './lib/hash.js';
 import { download, filename, obj3d, png2d, png3d, svg2d } from './lib/export.js';
@@ -20,26 +20,14 @@ const initialSpec = () => {
   return { id: gen.id, seed: 4213, params: defaults(gen) };
 };
 
-// Theme is a per-viewer convenience; storage may be unavailable.
-const THEME_KEY = 'specimens.theme';
-const initialTheme = () => {
-  try {
-    return localStorage.getItem(THEME_KEY) === 'night' ? 'night' : 'day';
-  } catch {
-    return 'day';
-  }
-};
-
 export default function App() {
   const [spec, setSpec] = useState(initialSpec);
-  const [theme, setTheme] = useState(initialTheme);
   const [status, setStatus] = useState('');
   const [projection, setProjection] = useState('axon');
   const memory = useRef({});
   const viewApi = useRef(null);
 
   const gen = byId(spec.id);
-  const palette = PALETTES[theme];
 
   const result = useMemo(() => {
     try {
@@ -50,16 +38,6 @@ export default function App() {
   }, [gen, spec.params, spec.seed]);
 
   const meta = sheetMeta(gen, spec.seed, projection, result.model?.stats);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', palette.paper);
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch {
-      /* private mode: the theme just will not be remembered */
-    }
-  }, [theme, palette]);
 
   // Keep the URL hash in step with the specimen, and follow it when edited.
   useEffect(() => {
@@ -131,9 +109,6 @@ export default function App() {
           Specimens<em>,</em>
         </h1>
         <span className="label sub">a parametric architectural miscellany</span>
-        <button className="label night-toggle" onClick={() => setTheme(theme === 'day' ? 'night' : 'day')}>
-          {theme === 'day' ? 'Night sheet' : 'Day sheet'}
-        </button>
       </header>
 
       <TabStrip generators={GENERATORS} activeId={spec.id} onSelect={selectTab} onWildCard={wildCard} />

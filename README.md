@@ -16,6 +16,10 @@ npm run build    # static site in dist/
 
 Everything runs in the browser. There is no backend and there are no API calls.
 
+The build uses relative asset paths, so `dist/` works at a domain root (Vercel,
+configured in `vercel.json`) and under a subpath (GitHub Pages, via
+`.github/workflows/deploy.yml`).
+
 ## The cabinet
 
 | No. | Specimen          | Kind | Notes                                                           |

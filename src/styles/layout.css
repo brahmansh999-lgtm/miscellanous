@@ -36,15 +36,6 @@
   text-overflow: ellipsis;
 }
 
-.masthead .night-toggle {
-  padding: 4px 0;
-  border-bottom: 1px solid transparent;
-}
-
-.masthead .night-toggle:hover {
-  border-bottom-color: var(--ink);
-}
-
 /* Tab strip: one line, scrolls sideways, never wraps. */
 .tabstrip {
   display: flex;
