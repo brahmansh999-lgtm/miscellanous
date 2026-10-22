@@ -63,10 +63,10 @@ export default {
     };
     const flute = (theta, y, r) => {
       if (!p.flutes) return r;
-      const phase = ((theta * p.flutes) / TAU) % 1;
+      const phase = ((((theta * p.flutes) / TAU) % 1) + 1) % 1;
       return r * (1 - p.fluteDepth * 0.11 * Math.pow(Math.sin(Math.PI * phase), 0.7));
     };
-    const segs = p.flutes ? p.flutes * 8 : 48;
+    const segs = p.flutes ? Math.min(p.flutes * 6, 180) : 48;
     let standing = 0;
     let tallest = 0;
 

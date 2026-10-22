@@ -292,3 +292,9 @@
   padding-top: 10px;
   border-top: var(--rule);
 }
+
+.status {
+  min-height: 16px;
+  margin: 10px 0 0;
+  color: var(--accent);
+}

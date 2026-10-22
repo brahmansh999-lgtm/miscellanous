@@ -4,6 +4,8 @@ import { defaults, randomParams } from './lib/schema.js';
 import { randomSeed } from './lib/rng.js';
 import { PALETTES } from './lib/palette.js';
 import { sheetMeta } from './lib/meta.js';
+import { decodeHash, encodeHash } from './lib/hash.js';
+import { download, filename, obj3d, png2d, png3d, svg2d } from './lib/export.js';
 import TabStrip from './components/TabStrip.jsx';
 import Sheet from './components/Sheet.jsx';
 import Controls, { ControlsHead } from './components/Controls.jsx';
@@ -12,13 +14,26 @@ import Viewport2D from './components/Viewport2D.jsx';
 import BottomSheet from './components/BottomSheet.jsx';
 
 const initialSpec = () => {
+  const fromUrl = decodeHash(window.location.hash, byId);
+  if (fromUrl) return fromUrl;
   const gen = GENERATORS[0];
   return { id: gen.id, seed: 4213, params: defaults(gen) };
 };
 
+// Theme is a per-viewer convenience; storage may be unavailable.
+const THEME_KEY = 'specimens.theme';
+const initialTheme = () => {
+  try {
+    return localStorage.getItem(THEME_KEY) === 'night' ? 'night' : 'day';
+  } catch {
+    return 'day';
+  }
+};
+
 export default function App() {
   const [spec, setSpec] = useState(initialSpec);
-  const [theme, setTheme] = useState('day');
+  const [theme, setTheme] = useState(initialTheme);
+  const [status, setStatus] = useState('');
   const [projection, setProjection] = useState('axon');
   const memory = useRef({});
   const viewApi = useRef(null);
@@ -39,7 +54,58 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', palette.paper);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      /* private mode: the theme just will not be remembered */
+    }
   }, [theme, palette]);
+
+  // Keep the URL hash in step with the specimen, and follow it when edited.
+  useEffect(() => {
+    const h = encodeHash(spec, gen);
+    if (window.location.hash !== h) history.replaceState(null, '', h);
+  }, [spec, gen]);
+
+  useEffect(() => {
+    const onHash = () => {
+      const next = decodeHash(window.location.hash, byId);
+      if (next) setSpec(next);
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  useEffect(() => {
+    if (!status) return;
+    const t = setTimeout(() => setStatus(''), 2400);
+    return () => clearTimeout(t);
+  }, [status]);
+
+  const exportAs = async (kind) => {
+    const api = viewApi.current;
+    if (!api || !result.model) return;
+    setStatus('Drawing…');
+    try {
+      let blob;
+      if (kind === 'svg') blob = new Blob([await svg2d(meta, palette, api.markup())], { type: 'image/svg+xml' });
+      else if (kind === 'png') blob = gen.dimension === '3d' ? await png3d(meta, palette, api.snapshot()) : await png2d(meta, palette, api.markup());
+      else blob = await obj3d(api.exportable());
+      download(blob, filename(meta, gen.id, kind));
+      setStatus('Saved');
+    } catch {
+      setStatus('Export failed');
+    }
+  };
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setStatus('Link copied');
+    } catch {
+      setStatus('Copy the address bar');
+    }
+  };
 
   const selectTab = (id) => {
     if (id === spec.id) return;
@@ -111,6 +177,30 @@ export default function App() {
                 </button>
               </div>
             </div>
+            <div className="ctl-group">
+              <span className="label">Export</span>
+              <div className="btn-row">
+                {gen.dimension === '2d' && (
+                  <button type="button" className="btn" onClick={() => exportAs('svg')}>
+                    SVG
+                  </button>
+                )}
+                <button type="button" className="btn" onClick={() => exportAs('png')}>
+                  PNG
+                </button>
+                {gen.dimension === '3d' && (
+                  <button type="button" className="btn" onClick={() => exportAs('obj')}>
+                    OBJ
+                  </button>
+                )}
+                <button type="button" className="btn btn-quiet" onClick={copyLink}>
+                  Link
+                </button>
+              </div>
+            </div>
+            <p className="status label" role="status" aria-live="polite">
+              {status}
+            </p>
           </Controls>
         </BottomSheet>
       </main>

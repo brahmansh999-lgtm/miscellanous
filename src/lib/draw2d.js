@@ -56,7 +56,7 @@ export function createDrawing(bounds) {
         d.line(x - t * 0.5, y + t * 0.5, x + t * 0.5, y - t * 0.5, 'accent');
         d.line(x - t * 0.6, y, x + t, y, 'accent');
       }
-      if (label != null) d.text(x - size * 0.45, (y1 + y2) / 2, label, { size, anchor: 'middle', s: 'text-accent', rotate: -90 });
+      if (label != null) d.text(x - size * 1.1, (y1 + y2) / 2, label, { size, anchor: 'middle', s: 'text-accent', rotate: -90 });
     },
 
     // A graphic scale bar: `n` segments of `step` units each.
