@@ -1,0 +1,186 @@
+/* Below 768px: full-width drawing, controls in a bottom sheet. */
+@media (max-width: 768px) {
+  .masthead {
+    gap: 12px;
+    padding: 10px 14px 8px;
+  }
+
+  .masthead h1 {
+    font-size: 23px;
+  }
+
+  .tabstrip {
+    padding: 0 14px;
+    scrollbar-width: none;
+  }
+
+  .tabstrip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    padding: 11px 1px 9px;
+  }
+
+  .tab-name {
+    font-size: 17px;
+  }
+
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: calc(var(--sheet-peek, 104px) + var(--safe-b));
+  }
+
+  .sheet {
+    padding: 16px 10px 10px 18px;
+  }
+
+  .zones-x {
+    top: 3px;
+    left: 18px;
+    right: 10px;
+  }
+
+  .zones-y {
+    top: 16px;
+    bottom: 10px;
+    left: 5px;
+  }
+
+  .sheet-note {
+    top: 9px;
+    left: 11px;
+    max-width: 26ch;
+    font-size: 13.5px;
+  }
+
+  .title-block {
+    width: 196px;
+  }
+
+  .tb-head {
+    padding: 4px 8px 0;
+  }
+
+  .tb-title {
+    padding: 0 8px 4px;
+    font-size: 19px;
+  }
+
+  .tb-cells > span {
+    padding: 3px 8px 4px;
+  }
+
+  .tb-cells b {
+    font-size: 9.5px;
+  }
+
+  .tb-cells > span:nth-child(2) {
+    display: none;
+  }
+
+  .tb-stats {
+    display: none;
+  }
+
+  /* The sheet itself. */
+  .panel-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    overflow: hidden;
+    border-left: 0;
+    border-top: var(--rule);
+    transition: transform 140ms linear;
+    will-change: transform;
+  }
+
+  .panel-sheet.is-dragging {
+    transition: none;
+  }
+
+  .sheet-grip {
+    position: relative;
+    flex: none;
+    touch-action: none;
+    cursor: grab;
+    background: var(--paper);
+    border-bottom: var(--rule);
+  }
+
+  .grip-bar {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 36px;
+    margin-left: -18px;
+    border-top: 3px double var(--ink-3);
+  }
+
+  .sheet-grip .ctl-head {
+    position: static;
+    padding: 15px calc(16px + var(--safe-r)) 10px calc(16px + var(--safe-l));
+    border-bottom: 0;
+  }
+
+  .sheet-grip .ctl-title h2 {
+    font-size: 26px;
+  }
+
+  .sheet-grip .seed-row {
+    margin-top: 6px;
+  }
+
+  .sheet-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .panel-sheet.is-collapsed .sheet-scroll {
+    overflow: hidden;
+  }
+
+  .ctl-body {
+    padding: 10px calc(16px + var(--safe-r)) calc(32px + var(--safe-b)) calc(16px + var(--safe-l));
+  }
+
+  .ctl-note {
+    display: none;
+  }
+
+  /* Touch targets: 44px minimum. */
+  .btn,
+  .seg-options button,
+  .seg-inline button {
+    min-height: 44px;
+  }
+
+  .value {
+    min-height: 44px;
+    padding: 0 2px;
+  }
+
+  .value-input {
+    min-height: 40px;
+    font-size: 16px;
+  }
+
+  .field-head {
+    min-height: 44px;
+  }
+
+  .slider .field-head {
+    margin-bottom: -8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .masthead .sub {
+    visibility: hidden;
+  }
+}

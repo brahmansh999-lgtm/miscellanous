@@ -9,6 +9,7 @@ import Sheet from './components/Sheet.jsx';
 import Controls, { ControlsHead } from './components/Controls.jsx';
 import Viewport3D from './components/Viewport3D.jsx';
 import Viewport2D from './components/Viewport2D.jsx';
+import BottomSheet from './components/BottomSheet.jsx';
 
 const initialSpec = () => {
   const gen = GENERATORS[0];
@@ -82,8 +83,7 @@ export default function App() {
           )}
         </Sheet>
 
-        <aside className="panel">
-          <ControlsHead gen={gen} seed={spec.seed} onSeed={setSeed} onReroll={() => setSeed(randomSeed())} />
+        <BottomSheet head={<ControlsHead gen={gen} seed={spec.seed} onSeed={setSeed} onReroll={() => setSeed(randomSeed())} />}>
           <Controls
             gen={gen}
             params={spec.params}
@@ -112,7 +112,7 @@ export default function App() {
               </div>
             </div>
           </Controls>
-        </aside>
+        </BottomSheet>
       </main>
     </div>
   );

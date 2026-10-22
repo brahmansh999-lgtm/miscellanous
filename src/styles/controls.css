@@ -129,11 +129,12 @@
   padding: 4px 0 2px;
   font-size: 12px;
   text-align: right;
-  border-bottom: 1px dotted var(--ink-3);
+  text-decoration: underline dotted var(--ink-3);
+  text-underline-offset: 5px;
 }
 
 .value:hover {
-  border-bottom-color: var(--ink);
+  text-decoration-color: var(--ink);
 }
 
 .value-input {
