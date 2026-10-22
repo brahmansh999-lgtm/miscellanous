@@ -12,6 +12,10 @@ import truss from './truss.js';
 import arcade from './arcade.js';
 import folly from './folly.js';
 import roof from './roof.js';
+import brick from './brick.js';
+import plan from './plan.js';
+import louvre from './louvre.js';
+import contour from './contour.js';
 
 export const GENERATORS = [
   stair,
@@ -23,6 +27,10 @@ export const GENERATORS = [
   arcade,
   folly,
   roof,
+  brick,
+  plan,
+  louvre,
+  contour,
 ].sort((a, b) => a.number - b.number);
 
 export const byId = (id) => GENERATORS.find((g) => g.id === id);

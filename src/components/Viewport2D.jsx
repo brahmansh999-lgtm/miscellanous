@@ -95,7 +95,8 @@ export default function Viewport2D({ drawing, palette, fitKey, apiRef }) {
   const [bx, by, bw, bh] = drawing.bounds;
   const base = useMemo(() => {
     const p = Math.max(bw, bh) * PAD;
-    return { x: bx - p, y: by - p, w: bw + 2 * p, h: bh + 2 * p };
+    // Extra room right and below keeps the drawing clear of the title block.
+    return { x: bx - p, y: by - p, w: bw * 1.1 + 2 * p, h: bh * 1.12 + 2 * p };
   }, [bx, by, bw, bh]);
 
   useEffect(() => setView({ z: 1, px: 0, py: 0 }), [fitKey]);

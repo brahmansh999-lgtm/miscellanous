@@ -70,12 +70,13 @@ export default {
       };
       const pt = (u, v) => [u * (S / 2), y0 + h(u, v), zc + v * (L / 2)];
       if (p.type === 'barrel') {
-        m.surface((i, j) => pt(i * 2 - 1, j * 2 - 1), res, res, { tone: 'light', crease: 25 });
+        m.surface((i, j) => pt(i * 2 - 1, j * 2 - 1), res, res, { tone: 'light', crease: 85 });
       } else {
         // Four triangular sectors meeting on the diagonals, so the groins
-        // fall on mesh edges instead of cutting across the grid.
+        // fall on mesh edges instead of cutting across the grid. Surface
+        // creases are left to the drawn ribs.
         for (const sector of SECTORS) {
-          m.surface((i, j) => pt(...sector(j, i * 2 - 1)), res, res / 2, { tone: 'light', crease: 25 });
+          m.surface((i, j) => pt(...sector(j, i * 2 - 1)), res, res / 2, { tone: 'light', crease: 85 });
         }
       }
 
