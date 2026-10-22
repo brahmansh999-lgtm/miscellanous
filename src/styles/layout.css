@@ -2,6 +2,7 @@
   display: grid;
   grid-template-rows: auto auto 1fr;
   height: 100%;
+  height: 100dvh;
   padding: var(--safe-t) var(--safe-r) 0 var(--safe-l);
 }
 
@@ -41,4 +42,235 @@
 
 .masthead .night-toggle:hover {
   border-bottom-color: var(--ink);
+}
+
+/* Tab strip: one line, scrolls sideways, never wraps. */
+.tabstrip {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 0 20px;
+  border-bottom: var(--rule);
+  scrollbar-width: thin;
+  scrollbar-color: var(--hair) transparent;
+}
+
+.tab {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 10px 1px 8px;
+  margin-bottom: -1px;
+  color: var(--ink-3);
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tab[aria-selected='true'] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.tab-no {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.tab[aria-selected='true'] .tab-no {
+  color: var(--accent);
+}
+
+.tab-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.tab-dim {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: super;
+}
+
+.tab-wild {
+  padding-right: 20px;
+}
+
+.tab-wild .tab-name {
+  font-style: italic;
+}
+
+/* Stage: the drawing sheet beside the parameter column. */
+.stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  min-height: 0;
+}
+
+.sheet {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 22px 22px 22px 28px;
+}
+
+.zones {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.zones-x {
+  top: 5px;
+  left: 28px;
+  right: 22px;
+}
+
+.zones-y {
+  flex-direction: column;
+  top: 22px;
+  bottom: 22px;
+  left: 10px;
+}
+
+.sheet-frame {
+  position: relative;
+  height: 100%;
+  border: var(--rule);
+  overflow: hidden;
+}
+
+.sheet-frame::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: var(--rule-hair);
+  pointer-events: none;
+}
+
+.viewport {
+  position: absolute;
+  inset: 0;
+}
+
+.viewport canvas,
+.viewport svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+.viewport svg:active,
+.viewport canvas:active {
+  cursor: grabbing;
+}
+
+.viewport-error {
+  display: grid;
+  place-items: center;
+}
+
+.sheet-note {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  max-width: 44ch;
+  margin: 0;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--ink-2);
+  pointer-events: none;
+}
+
+.sheet-note .num {
+  font-style: normal;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* Title block, bottom right, as on any drawing. */
+.title-block {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 300px;
+  background: var(--paper);
+  border-left: var(--rule);
+  border-top: var(--rule);
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.tb-row {
+  display: flex;
+}
+
+.tb-head {
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 10px 0;
+}
+
+.tb-no {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tb-title {
+  padding: 0 10px 6px;
+  font-size: 26px;
+  line-height: 1.1;
+  border-bottom: var(--rule-hair);
+}
+
+.tb-cells > span {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 5px 10px 6px;
+  border-right: var(--rule-hair);
+}
+
+.tb-cells > span:last-child {
+  border-right: 0;
+}
+
+.tb-cells i {
+  display: block;
+  font-style: normal;
+  font-size: 8.5px;
+}
+
+.tb-cells b {
+  font-weight: 500;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tb-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  padding: 5px 10px 6px;
+  border-top: var(--rule-hair);
+  color: var(--ink-2);
+}
+
+.tb-stats b {
+  font-weight: 500;
+  color: var(--ink);
 }
