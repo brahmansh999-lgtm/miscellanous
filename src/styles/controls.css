@@ -4,7 +4,7 @@
   min-height: 0;
   overflow-y: auto;
   border-left: var(--rule);
-  background: var(--paper);
+  background: var(--paper-2);
 }
 
 .ctl-head {
@@ -12,7 +12,7 @@
   top: 0;
   z-index: 2;
   padding: 16px 18px 10px;
-  background: var(--paper);
+  background: var(--paper-2);
   border-bottom: var(--rule);
 }
 
@@ -24,11 +24,12 @@
 
 .ctl-no {
   font-size: 12px;
-  color: var(--accent);
+  color: var(--ink-2);
 }
 
 .ctl-title h2 {
   margin: 0;
+  color: var(--active);
   font-size: 32px;
   line-height: 1;
 }
@@ -91,8 +92,8 @@
 }
 
 .btn:active {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--active);
+  border-color: var(--active);
   color: var(--paper);
 }
 
@@ -143,7 +144,7 @@
   font-size: 12px;
   text-align: right;
   background: var(--paper-2);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--ink);
   border-radius: 0;
   outline: none;
 }
@@ -151,7 +152,7 @@
 .unit {
   margin-left: 3px;
   font-size: 10px;
-  color: var(--ink-3);
+  color: var(--ink-2);
 }
 
 /* Slider: a hairline scale with ticks and a square thumb. 44px hit area. */
@@ -210,10 +211,14 @@
   border: 1px solid var(--ink);
 }
 
+/* Active: larger and filled, not coloured. */
 .slider.is-active .thumb,
 .track:focus-visible .thumb {
-  background: var(--accent);
-  border-color: var(--accent);
+  width: 11px;
+  height: 26px;
+  margin-left: -5.5px;
+  background: var(--active);
+  border-color: var(--active);
 }
 
 .toggle {
@@ -235,7 +240,7 @@
 .toggle-box span {
   padding: 3px 8px;
   border: 1px solid var(--hair);
-  color: var(--ink-3);
+  color: var(--ink-2);
 }
 
 .toggle-box span + span {
@@ -296,5 +301,5 @@
 .status {
   min-height: 16px;
   margin: 10px 0 0;
-  color: var(--accent);
+  color: var(--active);
 }

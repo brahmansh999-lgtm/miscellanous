@@ -1,17 +1,24 @@
 // JS mirror of the CSS tokens, for WebGL materials and exported SVG.
 
-// The night sheet: a flat blueprint ground with pale ink.
+// Black only. Greys for linework and text, never brighter than #D0D0D0;
+// no hue anywhere. "accent" is kept as a name for dimension linework.
 export const PALETTE = {
-  paper: '#15283F',
-  ink: '#E6E1D4',
-  ink2: '#A9B5C2',
-  faint: '#6F8399',
-  accent: '#EC6A4C',
-  light: '#1D3554',
-  mid: '#27436A',
-  dark: '#46628A',
-  shadow: '#07111D',
-  shade: [0, 0.18, 0.34],
+  paper: '#000000',
+  surface: '#0A0A0A',
+  ink: '#8A8A8A', // primary lines
+  ink2: '#6E6E6E', // labels
+  faint: '#6E6E6E',
+  construction: '#3A3A3A', // secondary lines
+  grid: '#1C1C1C', // faint grid
+  active: '#C8C8C8',
+  accent: '#6E6E6E',
+  light: '#161616',
+  mid: '#1E1E1E',
+  dark: '#262626',
+  hatchBg: '#161616',
+  hatchLine: '#3A3A3A',
+  shadow: '#000000',
+  shade: [0, 0.22, 0.4],
 };
 
 export const FONT_MONO = "'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace";

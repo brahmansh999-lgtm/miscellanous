@@ -22,6 +22,7 @@
   font-size: 28px;
   line-height: 1;
   letter-spacing: -0.01em;
+  color: var(--active);
 }
 
 .masthead h1 em {
@@ -56,7 +57,7 @@
   gap: 6px;
   padding: 10px 1px 8px;
   margin-bottom: -1px;
-  color: var(--ink-3);
+  color: var(--ink-2);
   border-bottom: 2px solid transparent;
 }
 
@@ -64,9 +65,10 @@
   color: var(--ink);
 }
 
+/* Active tab: brighter text and a heavier rule, no colour. */
 .tab[aria-selected='true'] {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
+  color: var(--active);
+  border-bottom-color: var(--active);
 }
 
 .tab-no {
@@ -75,7 +77,8 @@
 }
 
 .tab[aria-selected='true'] .tab-no {
-  color: var(--accent);
+  color: var(--active);
+  font-weight: 500;
 }
 
 .tab-name {
@@ -119,7 +122,7 @@
   justify-content: space-around;
   font-size: 9px;
   letter-spacing: 0.1em;
-  color: var(--ink-3);
+  color: var(--ink-2);
   pointer-events: none;
 }
 
@@ -139,7 +142,8 @@
 .sheet-frame {
   position: relative;
   height: 100%;
-  border: var(--rule);
+  border: 1px solid var(--ink);
+  background: var(--paper);
   overflow: hidden;
 }
 
@@ -147,7 +151,7 @@
   content: '';
   position: absolute;
   inset: 4px;
-  border: var(--rule-hair);
+  border: 1px solid var(--grid);
   pointer-events: none;
 }
 
@@ -191,7 +195,7 @@
 .sheet-note .num {
   font-style: normal;
   font-size: 11px;
-  color: var(--ink-3);
+  color: var(--ink-2);
 }
 
 /* Title block, bottom right, as on any drawing. */
@@ -201,9 +205,9 @@
   bottom: 0;
   z-index: 1;
   width: 300px;
-  background: var(--paper);
-  border-left: var(--rule);
-  border-top: var(--rule);
+  background: var(--paper-2);
+  border-left: 1px solid var(--ink);
+  border-top: 1px solid var(--ink);
   font-size: 10px;
   pointer-events: none;
 }
@@ -227,6 +231,7 @@
   padding: 0 10px 6px;
   font-size: 26px;
   line-height: 1.1;
+  color: var(--active);
   border-bottom: var(--rule-hair);
 }
 
@@ -264,5 +269,5 @@
 
 .tb-stats b {
   font-weight: 500;
-  color: var(--ink);
+  color: var(--active);
 }

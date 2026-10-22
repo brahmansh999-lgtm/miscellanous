@@ -63,6 +63,10 @@ export default function App() {
   const exportAs = async (kind) => {
     const api = viewApi.current;
     if (!api || !result.model) return;
+    if (kind === 'obj' && !result.model.solids.length) {
+      setStatus('Nothing solid to export');
+      return;
+    }
     setStatus('Drawing…');
     try {
       let blob;

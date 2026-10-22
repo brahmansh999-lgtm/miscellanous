@@ -81,9 +81,9 @@ function hatchTexture(palette) {
   const cv = document.createElement('canvas');
   cv.width = cv.height = s;
   const g = cv.getContext('2d');
-  g.fillStyle = '#ffffff';
+  g.fillStyle = palette.hatchBg;
   g.fillRect(0, 0, s, s);
-  g.strokeStyle = palette.ink;
+  g.strokeStyle = palette.hatchLine;
   g.lineWidth = 1.4;
   g.beginPath();
   for (let k = -s; k <= s; k += s / 2) {
@@ -125,7 +125,8 @@ function buildScene(group, model, palette) {
     light: new Color(palette.light),
     mid: new Color(palette.mid),
     dark: new Color(palette.dark),
-    hatch: new Color(palette.paper),
+    // The texture carries the hatch colours; white lets shading scale them.
+    hatch: new Color('#ffffff'),
   };
   const { min, max } = model.bounds;
   const size = Math.max(max[0] - min[0], max[1] - min[1], max[2] - min[2], 0.01);
@@ -158,8 +159,8 @@ function buildScene(group, model, palette) {
   for (const l of model.lines) {
     const geo = new BufferGeometry();
     geo.setAttribute('position', new BufferAttribute(l.positions, 3));
-    const color = l.tone === 'accent' ? palette.accent : palette.ink;
-    const mat = new LineBasicMaterial({ color, transparent: l.tone === 'thin', opacity: l.tone === 'thin' ? 0.4 : 1 });
+    const color = l.tone === 'accent' ? palette.accent : l.tone === 'thin' ? palette.construction : palette.ink;
+    const mat = new LineBasicMaterial({ color });
     const seg = new LineSegments(geo, mat);
     seg.name = `line-${l.tone}`;
     group.add(seg);
@@ -182,7 +183,7 @@ function buildScene(group, model, palette) {
   }
   const tg = new BufferGeometry();
   tg.setAttribute('position', new BufferAttribute(new Float32Array(ticks), 3));
-  const tm = new LineBasicMaterial({ color: palette.ink, transparent: true, opacity: 0.35 });
+  const tm = new LineBasicMaterial({ color: palette.grid });
   const tl = new LineSegments(tg, tm);
   tl.name = 'ground';
   group.add(tl);

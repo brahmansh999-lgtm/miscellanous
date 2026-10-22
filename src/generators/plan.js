@@ -107,7 +107,7 @@ export default {
       const y0 = r.y0 + (r.y0 < EPS ? 0 : k);
       const x1 = r.x1 - (r.x1 > W - EPS ? 0 : k);
       const y1 = r.y1 - (r.y1 > D - EPS ? 0 : k);
-      d.rect(x0, y0, x1 - x0, y1 - y0, r.corridor ? 'light' : 'paper');
+      d.rect(x0, y0, x1 - x0, y1 - y0, r.corridor ? 'light' : 'paper-line');
     });
 
     // Openings through the wall, a leaf and its swing.

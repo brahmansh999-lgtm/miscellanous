@@ -106,7 +106,7 @@
     flex: none;
     touch-action: none;
     cursor: grab;
-    background: var(--paper);
+    background: var(--paper-2);
     border-bottom: var(--rule);
   }
 

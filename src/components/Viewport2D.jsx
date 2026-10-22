@@ -11,7 +11,7 @@ function styleAttrs(s, pal) {
   const nss = { vectorEffect: 'non-scaling-stroke' };
   switch (s) {
     case 'poche':
-      return { fill: pal.ink, stroke: 'none' };
+      return { fill: pal.dark, stroke: pal.ink, strokeWidth: 1, ...nss };
     case 'paper':
       return { fill: pal.paper, stroke: 'none' };
     case 'paper-line':
@@ -27,9 +27,9 @@ function styleAttrs(s, pal) {
     case 'heavy':
       return { fill: 'none', stroke: pal.ink, strokeWidth: 2, strokeLinecap: 'square', ...nss };
     case 'thin':
-      return { fill: 'none', stroke: pal.ink, strokeWidth: 0.6, strokeOpacity: 0.55, ...nss };
+      return { fill: 'none', stroke: pal.construction, strokeWidth: 0.8, ...nss };
     case 'dash':
-      return { fill: 'none', stroke: pal.ink, strokeWidth: 0.7, strokeDasharray: '4 3', ...nss };
+      return { fill: 'none', stroke: pal.construction, strokeWidth: 0.8, strokeDasharray: '4 3', ...nss };
     case 'accent':
       return { fill: 'none', stroke: pal.accent, strokeWidth: 1, ...nss };
     case 'accent-fill':
@@ -212,8 +212,8 @@ export default function Viewport2D({ drawing, palette, fitKey, apiRef }) {
       >
         <defs>
           <pattern id="spc-hatch" patternUnits="userSpaceOnUse" width={hatchSize} height={hatchSize} patternTransform="rotate(45)">
-            <rect width={hatchSize} height={hatchSize} fill={palette.paper} />
-            <line x1="0" y1="0" x2="0" y2={hatchSize} stroke={palette.ink} strokeWidth={hatchSize * 0.14} />
+            <rect width={hatchSize} height={hatchSize} fill={palette.hatchBg} />
+            <line x1="0" y1="0" x2="0" y2={hatchSize} stroke={palette.hatchLine} strokeWidth={hatchSize * 0.14} />
           </pattern>
         </defs>
         <g ref={contentRef}>

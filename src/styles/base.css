@@ -1,21 +1,20 @@
-/* Tokens: a flat blueprint sheet with pale ink and one red accent. */
+/* Tokens: black ground, grey linework, no colour. Nothing above #D0D0D0. */
 :root {
-  --paper: #15283f;
-  --paper-2: #1b3150;
-  --ink: #e6e1d4;
-  --ink-2: #a9b5c2;
-  --ink-3: #6f8399;
-  --hair: rgba(230, 225, 212, 0.2);
-  --accent: #ec6a4c;
-  --tone-1: #1d3554;
-  --tone-2: #27436a;
-  --tone-3: #46628a;
+  --paper: #000000; /* ground: canvas, sheets, page */
+  --paper-2: #0a0a0a; /* surfaces that need separating */
+  --surface: #111111;
+  --ink: #8a8a8a; /* primary lines and body text */
+  --ink-2: #6e6e6e; /* labels */
+  --ink-3: #3a3a3a; /* secondary and construction lines */
+  --grid: #1c1c1c; /* faint grid and hairline rules */
+  --active: #c8c8c8; /* active text */
+  --hair: var(--ink-3);
 
   --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
 
-  --rule: 1px solid var(--ink);
-  --rule-hair: 1px solid var(--hair);
+  --rule: 1px solid var(--ink-3);
+  --rule-hair: 1px solid var(--grid);
 
   --safe-t: env(safe-area-inset-top, 0px);
   --safe-r: env(safe-area-inset-right, 0px);
@@ -64,7 +63,7 @@ button {
 }
 
 :focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 1px solid var(--active);
   outline-offset: 2px;
 }
 

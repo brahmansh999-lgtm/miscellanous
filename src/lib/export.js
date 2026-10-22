@@ -66,11 +66,11 @@ function titleBlock(meta, pal) {
   const label = `${mono} fill="${pal.ink2}" letter-spacing="1.4"`;
   const cell = w / 3;
   let out = `<g>`;
-  out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${pal.paper}" stroke="${pal.ink}" stroke-width="1"/>`;
-  out += t(12, 22, meta.number, 14, `${mono} font-weight="500" fill="${pal.ink}"`);
+  out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${pal.surface}" stroke="${pal.ink}" stroke-width="1"/>`;
+  out += t(12, 22, meta.number, 14, `${mono} font-weight="500" fill="${pal.active}"`);
   out += t(w - 12, 22, 'SPECIMEN', 10, `${label} text-anchor="end"`);
-  out += t(12, 58, meta.title, 32, `font-family="${esc(FONT_SERIF)}" fill="${pal.ink}"`);
-  out += `<line x1="${x}" y1="${y + 72}" x2="${x + w}" y2="${y + 72}" stroke="${pal.ink}" stroke-opacity="0.25"/>`;
+  out += t(12, 58, meta.title, 32, `font-family="${esc(FONT_SERIF)}" fill="${pal.active}"`);
+  out += `<line x1="${x}" y1="${y + 72}" x2="${x + w}" y2="${y + 72}" stroke="${pal.grid}"/>`;
   [
     ['SEED', meta.seed],
     ['SCALE', meta.scale],
@@ -78,10 +78,10 @@ function titleBlock(meta, pal) {
   ].forEach(([k, v], i) => {
     out += t(12 + i * cell, 90, k, 9, label);
     out += t(12 + i * cell, 110, v, 12, `${mono} font-weight="500" fill="${pal.ink}"`);
-    if (i) out += `<line x1="${x + i * cell}" y1="${y + 72}" x2="${x + i * cell}" y2="${y + 124}" stroke="${pal.ink}" stroke-opacity="0.25"/>`;
+    if (i) out += `<line x1="${x + i * cell}" y1="${y + 72}" x2="${x + i * cell}" y2="${y + 124}" stroke="${pal.grid}"/>`;
   });
   if (meta.stats.length) {
-    out += `<line x1="${x}" y1="${y + 124}" x2="${x + w}" y2="${y + 124}" stroke="${pal.ink}" stroke-opacity="0.25"/>`;
+    out += `<line x1="${x}" y1="${y + 124}" x2="${x + w}" y2="${y + 124}" stroke="${pal.grid}"/>`;
     out += t(12, 141, meta.stats.map(([k, v]) => `${k} ${v}`).join('  ·  '), 11, `${mono} fill="${pal.ink2}"`);
   }
   return `${out}</g>`;
@@ -102,7 +102,7 @@ async function sheetSVG(meta, pal, drawing, transparent = false) {
     transparent ? '' : `<rect width="100%" height="100%" fill="${pal.paper}"/>`,
     transparent ? '' : drawing,
     `<rect x="${M}" y="${M}" width="${SHEET_W - 2 * M}" height="${SHEET_H - 2 * M}" fill="none" stroke="${pal.ink}"/>`,
-    `<rect x="${M + 5}" y="${M + 5}" width="${SHEET_W - 2 * M - 10}" height="${SHEET_H - 2 * M - 10}" fill="none" stroke="${pal.ink}" stroke-opacity="0.2"/>`,
+    `<rect x="${M + 5}" y="${M + 5}" width="${SHEET_W - 2 * M - 10}" height="${SHEET_H - 2 * M - 10}" fill="none" stroke="${pal.grid}"/>`,
     zones,
     rows,
     `<text x="${M + 18}" y="${M + 34}" font-size="20" font-style="italic" font-family="${esc(FONT_SERIF)}" fill="${pal.ink2}"><tspan font-style="normal" font-family="${esc(FONT_MONO)}" font-size="12" fill="${pal.faint}">${esc(meta.number)}. </tspan>${esc(meta.note)}</text>`,
